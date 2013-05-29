@@ -24,21 +24,24 @@ public class NavigateBank extends Node {
     public void execute() {
         Mahogs.s = "In walk bank node";
         SceneObject Gate = SceneEntities.getNearest(9038);
-        if (!Variables.treeArea.contains(Players.getLocal())) {
-            Mahogs.s = "Walking to the Bank";
-            Variables.pathToBank.traverse();
-        } else {
-            Mahogs.s = "else";
-            out:
-            if (Gate != null && Gate.isOnScreen() && Variables.treeArea.contains(Players.getLocal())) {
-                Mahogs.s = "quick pay";
-                Gate.interact("Quick-pay(100)");
-            } else if (!Gate.isOnScreen() && Gate !=null && Variables.treeArea.contains(Players.getLocal())) {
-                Mahogs.s = "click on map";
+        if (Variables.treeArea.contains(Players.getLocal()) && Gate.isOnScreen()) {
+            Gate.interact("Quick-pay(100)");
+            Task.sleep(3000,3300);
+        }  else {
+            if (Variables.treeArea.contains(Players.getLocal()) && !Gate.isOnScreen()) {
                 Variables.treeGateTile.clickOnMap();
-                break out;
+                sleep(1000,1200);
+            }  else {
+                if (!Variables.treeArea.contains(Players.getLocal())) {
+                    Mahogs.s = "Walking to the Bank";
+                    Variables.pathToBank.traverse();
+                } else {
+                    if (Variables.gateArea.contains(Players.getLocal()) && Variables.pathToBank.validate()) {
+                        Variables.pathToBank.traverse();
+                    }
+                }
             }
         }
     }
-
 }
+

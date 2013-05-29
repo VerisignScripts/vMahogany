@@ -35,8 +35,9 @@ public class Variables {
     public static MyTilePath pathToTrees = new MyTilePath(new Tile[] { new Tile(2783, 3093, 0), new Tile(2790, 3090, 0),
             new Tile(2795, 3085, 0),
             new Tile(2801, 3081, 0), new Tile(2808, 3079, 0), new Tile(2815, 3082, 0) } );
-    public static Area treeArea = new Area(new Tile[] { new Tile(2817, 3089, 0), new Tile(2817, 3077, 0), new Tile(2827, 3077, 0),
-            new Tile(2828, 3088, 0), new Tile(2818, 3090, 0) });
+    public static Area gateArea = new Area(new Tile[] { new Tile(2815, 3084, 0), new Tile(2815, 3083, 0) });
+    public static Area treeArea = new Area(new Tile[] { new Tile(2827, 3090, 0), new Tile(2817, 3090, 0), new Tile(2817, 3076, 0),
+            new Tile(2828, 3076, 0), new Tile(2829, 3089, 0) });
     public static Area outArea = new Area(new Tile[] { new Tile(2816, 3074, 0), new Tile(2816, 3096, 0), new Tile(2800, 3103, 0),
             new Tile(2765, 3102, 0), new Tile(2770, 3074, 0), new Tile(2816, 3076, 0) });
 
