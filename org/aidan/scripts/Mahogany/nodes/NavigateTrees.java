@@ -1,5 +1,6 @@
 package org.aidan.scripts.Mahogany.nodes;
 
+import org.aidan.scripts.Mahogany.Mahogs;
 import org.aidan.scripts.Mahogany.util.Variables;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.Calculations;
@@ -25,6 +26,7 @@ public class NavigateTrees extends Node {
     @Override
     public void execute() {
         SceneObject Gate = SceneEntities.getNearest(9038);
+        Mahogs.s = "Walking to trees";
         if (Calculations.distanceTo(Variables.bankGateTile) > 6 && Variables.pathToTrees.validate()) {  // add checks like path.validate() and whatever is in that api
             Variables.pathToTrees.traverse();
         } else if (Gate != null) {

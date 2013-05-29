@@ -16,26 +16,27 @@ public class NavigateBank extends Node {
 
     @Override
     public boolean activate() {
-        return Inventory.isFull() && Inventory.contains(Variables.sticks) && Calculations.distanceTo(Variables.bankTile) > 5 & Variables.pathToTrees.validate();
+        return Inventory.isFull() && Inventory.contains(Variables.sticks) && Calculations.distanceTo(Variables.bankTile)
+                > 5 & Variables.pathToTrees.validate();
     }
 
     @Override
     public void execute() {
-        Variables.s = "In walk bank node";
+        Mahogs.s = "In walk bank node";
         SceneObject Gate = SceneEntities.getNearest(9038);
         if (!Variables.treeArea.contains(Players.getLocal())) {
-            Variables.s = "Walking to the Bank";
+            Mahogs.s = "Walking to the Bank";
             Variables.pathToBank.traverse();
         } else {
-            Variables.s = "else";
+            Mahogs.s = "else";
+            out:
             if (Gate != null && Gate.isOnScreen() && Variables.treeArea.contains(Players.getLocal())) {
-                Variables.s = "quick pay";
+                Mahogs.s = "quick pay";
                 Gate.interact("Quick-pay(100)");
-                Task.sleep(4000, 4200);
             } else if (!Gate.isOnScreen() && Gate !=null && Variables.treeArea.contains(Players.getLocal())) {
-                Variables.s = "click on map";
+                Mahogs.s = "click on map";
                 Variables.treeGateTile.clickOnMap();
-                Task.sleep(1000, 1200);
+                break out;
             }
         }
     }

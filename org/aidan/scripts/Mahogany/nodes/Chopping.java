@@ -1,5 +1,6 @@
 package org.aidan.scripts.Mahogany.nodes;
 
+import org.aidan.scripts.Mahogany.Mahogs;
 import org.aidan.scripts.Mahogany.util.Variables;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.interactive.Players;
@@ -19,7 +20,7 @@ public class Chopping extends Node {
 
     @Override
     public void execute() {
-        Variables.s = "Chopping logs";
+        Mahogs.s = "Chopping logs";
         SceneObject theTree = SceneEntities.getNearest(Variables.tree);
         if (theTree != null) {
             if (theTree.isOnScreen()) {

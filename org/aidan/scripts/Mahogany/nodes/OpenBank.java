@@ -1,5 +1,6 @@
 package org.aidan.scripts.Mahogany.nodes;
 
+import org.aidan.scripts.Mahogany.Mahogs;
 import org.aidan.scripts.Mahogany.util.Variables;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.Calculations;
@@ -21,7 +22,7 @@ public class OpenBank extends Node {
     @Override
     public void execute() {
 
-        Variables.s = "Banking";
+        Mahogs.s = "Banking";
         final NPC banker = NPCs.getNearest(BANKER_ID);
         if (banker != null) {
             if (banker.isOnScreen() && !Widgets.get(323, 1).visible()) {

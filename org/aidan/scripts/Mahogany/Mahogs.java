@@ -27,7 +27,7 @@ import java.util.List;
 @Manifest( authors = "Verisign", name = "vMahogany", description = "Chops Mahogany and banks it", version = 0.1)
 public class Mahogs extends ActiveScript implements PaintListener, MessageListener {
 
-    public String s;
+    public static String s;
     private Timer runTime = new Timer(0);
     private int logsChopped = 0;
     private int logPrice;
