@@ -25,12 +25,12 @@ public class NavigateTrees extends Node {
 
     @Override
     public void execute() {
-        SceneObject Gate = SceneEntities.getNearest(9038);
+        SceneObject gate = SceneEntities.getNearest(9038);
         Mahogs.s = "Walking to trees";
-        if (!Gate.isOnScreen()) {
+        if (!gate.isOnScreen()) {
             Variables.pathToTrees.traverse();
         } else {
-            Gate.interact("Quick-pay(100)");
+            gate.interact("Quick-pay(100)");
             sleep(1000,1200);
         }
 

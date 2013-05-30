@@ -22,16 +22,17 @@ public class NavigateBank extends Node {
 
     @Override
     public void execute() {
-        SceneObject Gate = SceneEntities.getNearest(9038);
+        SceneObject gate = SceneEntities.getNearest(9038);
         Mahogs.s = "0";
-        if (Gate.isOnScreen() && Gate.validate() && Variables.treeArea.contains(Players.getLocal())) {
+        if (gate != null && gate.validate() && gate.isOnScreen() && Variables.treeArea.contains(Players.getLocal())) {
             Mahogs.s = "1";
-            Gate.interact("Quick-pay(100)");
+            gate.interact("Quick-pay(100)");
             sleep(1000,1200);
-        } else if (!Gate.isOnScreen() && Variables.treeArea.contains(Players.getLocal())) {
+        } else if (Variables.treeGateTile.isOnMap() && gate != null && !gate.isOnScreen() && Variables.treeArea.contains(Players.getLocal())) {
             Mahogs.s = "2";
-            Variables.treeGateTile.clickOnMap();
-            sleep(2000,2000);
+            if  (Variables.treeGateTile.clickOnMap()) {
+                sleep(2000,2000);
+            }
         } else {
             Mahogs.s = "3";
             Variables.pathToBank.traverse();
