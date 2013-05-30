@@ -13,11 +13,7 @@ import java.util.Arrays;
 import java.util.EnumSet;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Aid
- * Date: 29/05/13
- * Time: 21:22
- * To change this template use File | Settings | File Templates.
+Thanks to Logicidal
  */
 public class MyTilePath extends Path {
     protected Tile[] tiles;
@@ -125,7 +121,7 @@ public class MyTilePath extends Path {
     }
 
 
-    private void walkPath(Tile[] tiles) {
+    public void walkPath(Tile[] tiles) {
         TilePath path = Walking.newTilePath(tiles);
         Tile justClicked = null;
         while (path.getEnd().distanceTo() > 5) {

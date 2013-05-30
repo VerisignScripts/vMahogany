@@ -29,9 +29,9 @@ public class Variables {
     public static Tile bankTile = new Tile(2783, 3094, 0);
     public static Tile treeGateTile = new Tile(2817, 3083,0);
     public static Tile bankGateTile = new Tile(2816, 3083, 0);
-    public static MyTilePath pathToBank = new MyTilePath ( new Tile[] { new Tile(2814, 3081, 0), new Tile(2810, 3078, 0), new Tile(2805, 3078, 0),
-            new Tile(2800, 3080, 0), new Tile(2797, 3084, 0), new Tile(2793, 3087, 0),
-            new Tile(2789, 3090, 0), new Tile(2784, 3092, 0), new Tile(2781, 3093, 0) });
+    public static MyTilePath pathToBank = new MyTilePath (new Tile[] {new Tile(2811, 3079, 0), new Tile(2806, 3079, 0), new Tile(2801, 3080, 0),
+            new Tile(2799, 3085, 0), new Tile(2795, 3088, 0), new Tile(2790, 3089, 0),
+            new Tile(2785, 3092, 0), new Tile(2780, 3093, 0) });
     public static MyTilePath pathToTrees = new MyTilePath(new Tile[] { new Tile(2783, 3093, 0), new Tile(2790, 3090, 0),
             new Tile(2795, 3085, 0),
             new Tile(2801, 3081, 0), new Tile(2808, 3079, 0), new Tile(2815, 3082, 0) });

@@ -18,9 +18,8 @@ public class PackLogs extends Node {
     public void execute() {
         Mahogs.s = "Packing Logs";
         for(int i=0; i<28; i++){
-            System.out.println("Pack logs");
             if(checkItem(Widgets.get(323, 5).getChild(i).getChildId()))
-                Widgets.get(323,5).getChild(i).interact("Pack All");
+                    Widgets.get(323,5).getChild(i).interact("Pack All");
         }
     }
 

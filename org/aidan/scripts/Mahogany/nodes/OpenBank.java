@@ -17,7 +17,7 @@ public class OpenBank extends Node {
     @Override
     public boolean activate() {
         final NPC Banker = NPCs.getNearest(BANKER_ID);
-        return Inventory.contains(Variables.logs) && Banker.isOnScreen() && Calculations.distanceTo(Variables.bankTile) < 3 && !Widgets.get(323, 1).visible() ;
+        return Banker != null && Inventory.contains(Variables.logs) && Banker.isOnScreen() && Calculations.distanceTo(Variables.bankTile) < 3 && !Widgets.get(323, 1).visible() ;
     }
 
     @Override

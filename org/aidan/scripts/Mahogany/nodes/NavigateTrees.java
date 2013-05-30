@@ -20,19 +20,20 @@ public class NavigateTrees extends Node {
 
     @Override
     public boolean activate() {
-        return !Inventory.isFull() && Inventory.contains(Variables.sticks) && !Variables.treeArea.contains(Players.getLocal());
+        return !Inventory.contains(Variables.logs) && Inventory.contains(Variables.sticks) && !Variables.treeArea.contains(Players.getLocal());
     }
 
     @Override
     public void execute() {
         SceneObject gate = SceneEntities.getNearest(9038);
         Mahogs.s = "Walking to trees";
-        if (!gate.isOnScreen()) {
-            Variables.pathToTrees.traverse();
-        } else {
-            gate.interact("Quick-pay(100)");
-            sleep(1000,1200);
+        if (gate != null) {
+            if (!gate.isOnScreen()) {
+                Variables.pathToTrees.traverse();
+            } else {
+                gate.interact("Quick-pay(100)");
+                sleep(1000,1200);
+            }
         }
-
     }
 }
