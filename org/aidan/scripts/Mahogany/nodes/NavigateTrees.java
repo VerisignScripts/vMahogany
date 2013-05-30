@@ -27,15 +27,12 @@ public class NavigateTrees extends Node {
     public void execute() {
         SceneObject Gate = SceneEntities.getNearest(9038);
         Mahogs.s = "Walking to trees";
-        if (Calculations.distanceTo(Variables.bankGateTile) > 6 && Variables.pathToTrees.validate()) {  // add checks like path.validate() and whatever is in that api
-            do {
-                Variables.pathToTrees.traverse();
-            }
-            while (!Gate.isOnScreen());
-            if (Gate.isOnScreen()) {
-                Gate.interact("Quick-pay(100)");
-                sleep(1000,1200);
-            }
+        if (!Gate.isOnScreen()) {
+            Variables.pathToTrees.traverse();
+        } else {
+            Gate.interact("Quick-pay(100)");
+            sleep(1000,1200);
         }
+
     }
 }

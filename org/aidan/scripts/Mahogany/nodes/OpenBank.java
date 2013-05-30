@@ -16,7 +16,8 @@ public class OpenBank extends Node {
 
     @Override
     public boolean activate() {
-        return Inventory.contains(Variables.logs) && Calculations.distanceTo(Variables.bankTile) < 3 && !Widgets.get(323, 1).visible() ;
+        final NPC Banker = NPCs.getNearest(BANKER_ID);
+        return Inventory.contains(Variables.logs) && Banker.isOnScreen() && Calculations.distanceTo(Variables.bankTile) < 3 && !Widgets.get(323, 1).visible() ;
     }
 
     @Override
@@ -24,7 +25,7 @@ public class OpenBank extends Node {
 
         Mahogs.s = "Banking";
         final NPC banker = NPCs.getNearest(BANKER_ID);
-        if (banker != null) {
+        if (banker != null && !Widgets.get(323, 1).visible()) {
             if (banker.isOnScreen() && !Widgets.get(323, 1).visible()) {
                 System.out.println("Open deposit window");
                 banker.interact("Send-parcel");

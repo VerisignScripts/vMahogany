@@ -4,13 +4,14 @@ import org.aidan.scripts.Mahogany.Mahogs;
 import org.aidan.scripts.Mahogany.util.Variables;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.Widgets;
+import org.powerbot.game.api.methods.tab.Inventory;
 
 public class PackLogs extends Node {
 
 
     @Override
     public boolean activate() {
-        return Widgets.get(323, 1).visible();
+        return Widgets.get(323, 1).visible() && Inventory.contains(Variables.logs);
     }
 
     @Override

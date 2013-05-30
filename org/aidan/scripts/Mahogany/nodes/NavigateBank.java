@@ -17,30 +17,24 @@ public class NavigateBank extends Node {
     @Override
     public boolean activate() {
         return Inventory.isFull() && Inventory.contains(Variables.sticks) && Calculations.distanceTo(Variables.bankTile)
-                > 5 & Variables.pathToTrees.validate();
+                > 5;
     }
 
     @Override
     public void execute() {
-        Mahogs.s = "In walk bank node";
         SceneObject Gate = SceneEntities.getNearest(9038);
-        if (Variables.treeArea.contains(Players.getLocal()) && Gate.isOnScreen()) {
+        Mahogs.s = "0";
+        if (Gate.isOnScreen() && Gate.validate() && Variables.treeArea.contains(Players.getLocal())) {
+            Mahogs.s = "1";
             Gate.interact("Quick-pay(100)");
-            Task.sleep(3000,3300);
-        }  else {
-            if (Variables.treeArea.contains(Players.getLocal()) && !Gate.isOnScreen()) {
-                Variables.treeGateTile.clickOnMap();
-                sleep(1000,1200);
-            }  else {
-                if (!Variables.treeArea.contains(Players.getLocal())) {
-                    Mahogs.s = "Walking to the Bank";
-                    Variables.pathToBank.traverse();
-                } else {
-                    if (Variables.gateArea.contains(Players.getLocal()) && Variables.pathToBank.validate()) {
-                        Variables.pathToBank.traverse();
-                    }
-                }
-            }
+            sleep(1000,1200);
+        } else if (!Gate.isOnScreen() && Variables.treeArea.contains(Players.getLocal())) {
+            Mahogs.s = "2";
+            Variables.treeGateTile.clickOnMap();
+            sleep(2000,2000);
+        } else {
+            Mahogs.s = "3";
+            Variables.pathToBank.traverse();
         }
     }
 }
