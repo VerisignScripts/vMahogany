@@ -11,9 +11,12 @@ import org.powerbot.game.api.methods.Walking;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.node.SceneEntities;
 import org.powerbot.game.api.methods.tab.Inventory;
+import org.powerbot.game.api.util.Timer;
 import org.powerbot.game.api.wrappers.Tile;
 import org.powerbot.game.api.wrappers.map.TilePath;
 import org.powerbot.game.api.wrappers.node.SceneObject;
+
+import java.awt.*;
 
 
 public class NavigateBank extends Node {
@@ -34,12 +37,18 @@ public class NavigateBank extends Node {
         } else {
             if (gate != null && gate.validate() && gate.isOnScreen() && Variables.treeArea.contains(Players.getLocal())) {
                 Mahogs.s = "3";
-                gate.interact("Quick-pay(100)");
+                if (gate.interact("Quick-pay(100)")) {
+                    Timer t = new Timer(7500);
+                    while (t.isRunning() && gate != null) {
+                        Task.sleep(50);
+                    }
+                }
             } else {
                 if (!gate.isOnScreen()) {
                     Mahogs.s = "4";
-                    Variables.treeGateTile.clickOnMap();
-                    sleep(2000,2200);
+                    if (Variables.treeGateTile.clickOnMap()) {
+                        sleep(2000,2200);
+                    }
                 }
             }
         }
