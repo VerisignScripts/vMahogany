@@ -6,5 +6,6 @@ import java.net.URL;
 
 
 public class Methods {
+    // will be used when expanding the script
 
 }

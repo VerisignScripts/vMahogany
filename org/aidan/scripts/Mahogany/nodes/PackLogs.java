@@ -11,7 +11,7 @@ public class PackLogs extends Node {
 
     @Override
     public boolean activate() {
-        return Widgets.get(323, 1).visible() && Inventory.contains(Variables.logs);
+        return Widgets.get(323, 5).visible() && Inventory.contains(Variables.logs);
     }
 
     @Override

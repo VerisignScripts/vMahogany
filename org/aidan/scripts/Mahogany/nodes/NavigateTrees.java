@@ -2,11 +2,13 @@ package org.aidan.scripts.Mahogany.nodes;
 
 import org.aidan.scripts.Mahogany.Mahogs;
 import org.aidan.scripts.Mahogany.util.Variables;
+import org.powerbot.core.script.job.Task;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.Calculations;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.node.SceneEntities;
 import org.powerbot.game.api.methods.tab.Inventory;
+import org.powerbot.game.api.util.Timer;
 import org.powerbot.game.api.wrappers.node.SceneObject;
 
 /**
@@ -31,8 +33,13 @@ public class NavigateTrees extends Node {
             if (!gate.isOnScreen()) {
                 Variables.pathToTrees.traverse();
             } else {
-                gate.interact("Quick-pay(100)");
-                sleep(1000,1200);
+                if (gate.interact("Quick-pay(100)")) {
+                    Timer t = new Timer( 3200);
+                    t.reset();
+                    while (t.isRunning() && !Variables.treeArea.contains(Players.getLocal())){
+                        Task.sleep(300, 500);
+                    }
+                }
             }
         }
     }

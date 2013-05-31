@@ -11,6 +11,7 @@ import org.powerbot.game.api.methods.Walking;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.node.SceneEntities;
 import org.powerbot.game.api.methods.tab.Inventory;
+import org.powerbot.game.api.methods.widget.Camera;
 import org.powerbot.game.api.util.Timer;
 import org.powerbot.game.api.wrappers.Tile;
 import org.powerbot.game.api.wrappers.map.TilePath;
@@ -23,34 +24,29 @@ public class NavigateBank extends Node {
 
     @Override
     public boolean activate() {
-        return Inventory.isFull() && Inventory.contains(Variables.sticks) && Calculations.distanceTo(Variables.bankTile)
-                > 5;
+        return Inventory.isFull() && Inventory.contains(Variables.sticks) && (Calculations.distanceTo(Variables.bankTile) > 8);
     }
 
     @Override
     public void execute() {
         SceneObject gate = SceneEntities.getNearest(9038);
         Mahogs.s = "1";
-        if (!Variables.treeArea.contains(Players.getLocal())) {
-            Mahogs.s = "2";
-            Variables.pathToBank.traverse();
-        } else {
-            if (gate != null && gate.validate() && gate.isOnScreen() && Variables.treeArea.contains(Players.getLocal())) {
-                Mahogs.s = "3";
-                if (gate.interact("Quick-pay(100)")) {
-                    Timer t = new Timer(7500);
-                    while (t.isRunning() && gate != null) {
-                        Task.sleep(50);
-                    }
-                }
-            } else {
-                if (!gate.isOnScreen()) {
-                    Mahogs.s = "4";
-                    if (Variables.treeGateTile.clickOnMap()) {
-                        sleep(2000,2200);
-                    }
+        if (gate != null && gate.validate() && gate.isOnScreen() && Variables.treeArea.contains(Players.getLocal())) { // Gate visible + in tree area
+            Mahogs.s = "3";
+            if (gate.interact("Quick-pay(100)")) {
+                Timer t = new Timer( 3200);
+                t.reset();
+                while (t.isRunning() && Variables.treeArea.contains(Players.getLocal())){
+                    Task.sleep(300,500);
                 }
             }
+        }  else {
+            if (gate != null && !gate.isOnScreen() && Variables.treeArea.contains(Players.getLocal())) {    // Gate not visible + in tree area
+                Camera.turnTo(gate);
+            }
+        }
+        if (!Variables.treeArea.contains(Players.getLocal())) {  // not in tree area ( no need to open gate)
+            Variables.pathToBank.traverse();
         }
     }
 }
