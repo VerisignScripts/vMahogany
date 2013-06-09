@@ -20,15 +20,15 @@ public class NavigateBank extends Node {
 
     @Override
     public boolean activate() {
-        return Inventory.isFull() && Inventory.contains(Variables.sticks) && (Calculations.distanceTo(Variables.bankTile) > 8);
+        return Inventory.isFull() && Inventory.contains(Variables.sticks)
+                && (Calculations.distanceTo(Variables.bankTile) > 8);
     }
 
     @Override
     public void execute() {
         SceneObject gate = SceneEntities.getNearest(9038);
-        Mahogs.s = "1";
+        Mahogs.s = "Going to the Bank";
         if (gate != null && gate.validate() && gate.isOnScreen() && Variables.treeArea.contains(Players.getLocal())) { // Gate visible + in tree area
-            Mahogs.s = "3";
             if (gate.interact("Quick-pay(100)")) {
                 Timer t = new Timer( 3200);
                 t.reset();

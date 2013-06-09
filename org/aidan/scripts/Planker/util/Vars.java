@@ -2,13 +2,6 @@ package org.aidan.scripts.Mahogany.Planker.util;
 
 import org.powerbot.game.api.wrappers.Tile;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Aid
- * Date: 02/06/13
- * Time: 00:39
- * To change this template use File | Settings | File Templates.
- */
 public class Vars {
 
     public static int PLANKER = 4250;

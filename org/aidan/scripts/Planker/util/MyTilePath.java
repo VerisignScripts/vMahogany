@@ -1,21 +1,21 @@
-package org.aidan.scripts.JungleSpiders.util;
+package org.aidan.scripts.Mahogany.Planker.util;
 
 import org.powerbot.core.script.job.Task;
 import org.powerbot.game.api.methods.Calculations;
 import org.powerbot.game.api.methods.Walking;
 import org.powerbot.game.api.methods.interactive.Players;
+import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.wrappers.Tile;
 import org.powerbot.game.api.wrappers.map.Path;
+import org.powerbot.game.api.wrappers.map.TilePath;
 
 import java.util.Arrays;
 import java.util.EnumSet;
 
-/**
- Massive thanks to Logicidal for this.
- */
-
 
 public class MyTilePath extends Path {
+
+
     protected Tile[] tiles;
     protected Tile[] orig;
     private boolean end;
@@ -95,7 +95,7 @@ public class MyTilePath extends Path {
 
     public MyTilePath randomize(final int maxX, final int maxY) {
         for (int i = 0; i < tiles.length; ++i) {
-            tiles[i] = orig[i].derive(org.powerbot.game.api.util.Random.nextInt(-maxX, maxX + 1), org.powerbot.game.api.util.Random.nextInt(-maxY, maxY + 1));
+            tiles[i] = orig[i].derive(Random.nextInt(-maxX, maxX + 1), Random.nextInt(-maxY, maxY + 1));
         }
         return this;
     }
@@ -119,4 +119,21 @@ public class MyTilePath extends Path {
         System.arraycopy(tiles, 0, a, 0, tiles.length);
         return a;
     }
+
+
+    public void walkPath(Tile[] tiles) {
+        TilePath path = Walking.newTilePath(tiles);
+        Tile justClicked = null;
+        while (path.getEnd().distanceTo() > 5) {
+            if (!path.getNext().equals(justClicked) || !Players.getLocal().isMoving()) {
+                justClicked = path.getNext();
+                justClicked.randomize(1, 1).clickOnMap();
+                Task.sleep(750, 1000);
+            }
+            Task.sleep(200, 400);
+        }
+    }
 }
+
+
+

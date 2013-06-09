@@ -24,7 +24,6 @@ public class Deposit extends Node {
             if (Inventory.contains(Vars.planks)) {
                 if (Bank.deposit(Vars.planks, Bank.Amount.ALL)) {
                     Timer t = new Timer(3200);
-                    t.reset();
                     while (t.isRunning() && Inventory.contains(Vars.planks)){
                         Task.sleep(300, 500);
                     }

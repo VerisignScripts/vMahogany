@@ -24,7 +24,7 @@ public class OpenBank extends Node {
     @Override
     public void execute() {
 
-        Mahogs.s = "Banking";
+        Mahogs.s = "Opening bank";
         final NPC banker = NPCs.getNearest(BANKER_ID);
         if (banker != null) {
             if (banker.isOnScreen()) {
