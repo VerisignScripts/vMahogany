@@ -1,7 +1,7 @@
 package org.aidan.scripts.Mahogany.HardwoodGrove.nodes;
 
 import org.aidan.scripts.Mahogany.HardwoodGrove.Mahogs;
-import org.aidan.scripts.Mahogany.HardwoodGrove.util.Variables;
+import org.aidan.scripts.Mahogany.HardwoodGrove.util.Constants;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.Calculations;
 import org.powerbot.game.api.methods.Widgets;
@@ -17,8 +17,8 @@ public class OpenBank extends Node {
     @Override
     public boolean activate() {
         final NPC theBanker = NPCs.getNearest(BANKER_ID);
-        return Inventory.contains(Variables.LOGS) && theBanker.validate() && !Widgets.get(323, 5).visible()
-                && (Calculations.distanceTo(Variables.BANK_TILE) <= 8);
+        return Inventory.contains(Constants.LOGS) && theBanker.validate() && !Widgets.get(323, 5).visible()
+                && (Calculations.distanceTo(Constants.BANK_TILE) <= 8);
     }
 
     @Override

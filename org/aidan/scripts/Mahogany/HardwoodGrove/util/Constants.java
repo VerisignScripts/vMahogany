@@ -1,26 +1,16 @@
 package org.aidan.scripts.Mahogany.HardwoodGrove.util;
 
-
 import org.powerbot.game.api.util.Timer;
 import org.powerbot.game.api.wrappers.Area;
 import org.powerbot.game.api.wrappers.Tile;
 
+public class Constants {
 
 
 
-/**
- * Created with IntelliJ IDEA.
- * User: Aid
- * Date: 29/05/13
- * Time: 21:19
- * To change this template use File | Settings | File Templates.
- */
-public class Variables {
-
-    public static Timer t = new Timer(3200);
     public static final int STICKS = 6306;
     public static final int TREE = 70076;
-    public static final int LOGS[] = {6332, 15290, 6333, 15289};
+    public static final int[] LOGS = {6332, 15290, 6333, 15289};
     public static final Tile SAFE_TILE = new Tile(2815, 3091, 0);
     public static final Tile BANK_TILE = new Tile(2781, 3095, 0);
     public static final MyTilePath PATH_TO_BANK = new MyTilePath (new Tile[] {new Tile(2815, 3086, 0), new Tile(2814, 3091, 0), new Tile(2809, 3093, 0),

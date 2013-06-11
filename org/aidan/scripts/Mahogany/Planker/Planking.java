@@ -50,10 +50,7 @@ public class Planking extends ActiveScript implements PaintListener {
 
     public void onRepaint(Graphics g1) {
         Graphics2D g = (Graphics2D)g1;
-
         g.drawString("Status: " + status, 302, 327);
 
     }
-
-
 }
